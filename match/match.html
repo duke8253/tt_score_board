@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Match Page</title>
+  </head>
+  <body>
+    <script>
+      if(typeof(EventSource) !== "undefined") {
+        // Yes! Server-sent events support!
+        var source = new EventSource('/match');
+        source.onmessage = function(event) {
+          document.body.innerHTML += event.data + '<br>';
+        };
+      } else {
+        // Sorry! No server-sent events support..
+        document.body.innerHTML = 'Server-Sent Events not supported...<br>';
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "tt_utils",
+  "version": "1.0.0",
+  "description": "Table Tennis Utilities",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duke8253/tt_utils.git"
+  },
+  "keywords": [
+    "Table Tennis",
+    "Ping Pong"
+  ],
+  "author": "Fei Deng",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/duke8253/tt_utils/issues"
+  },
+  "homepage": "https://github.com/duke8253/tt_utils#readme"
+}
