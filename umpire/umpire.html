@@ -1,12 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
+    <meta charset='utf-8' />
+    <link rel='stylesheet' type='text/css' href='/umpire/umpire.css' />
+
     <title>Umpire Page</title>
   </head>
   <body>
-    <p id="counter">Loading button click data.</p>
-    <button id="myButton">Click me!</button>
+    <div class='scoreboard'>
+      <div class='scoreboard-left'>
+        <div class='scoreboard-border'>
+          <div class='player-names'>Name 1</div>
+          <div class='game-score'>
+            <div><button class='plus-minus-button' id='game-score-left-minus'>-</button></div>
+            <div id='game-score-left'>0</div>
+            <div><button class='plus-minus-button' id='game-score-left-plus'>+</button></div>
+          </div>
+          <div class='set-score'>
+            <div><button class='plus-minus-button' id='set-score-left-minus'>-</button></div>
+            <div id='set-score-left'>0</div>
+            <div><button class='plus-minus-button' id='set-score-left-plus'>+</button></div>
+          </div>
+        </div>
+      </div>
+      <div class='scoreboard-right'>
+        <div class='scoreboard-border'>
+          <div class='player-names'>Name 2</div>
+          <div class='set-score'>
+            <div><button class='plus-minus-button' id='set-score-right-minus'>-</button></div>
+            <div id='set-score-right'>0</div>
+            <div><button class='plus-minus-button' id='set-score-right-plus'>+</button></div>
+          </div>
+          <div class='game-score'>
+            <div><button class='plus-minus-button' id='game-score-right-minus'>-</button></div>
+            <div id='game-score-right'>0</div>
+            <div><button class='plus-minus-button' id='game-score-right-plus'>+</button></div>
+          </div>
+        </div>
+      </div>
+      <div class='match-result'>
+        <div class='match-result-border'>
+          <div class='match-result-header'></div>
+          <div class='match-result-header'>1</div>
+          <div class='match-result-header'>2</div>
+          <div class='match-result-header'>3</div>
+          <div class='match-result-header'>4</div>
+          <div class='match-result-header'>5</div>
+          <div class='match-result-header'>6</div>
+          <div class='match-result-header'>7</div>
+          <div class='match-result-name'>Name 1</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-name'>Name 2</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+          <div class='match-result-score'>0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div id='counter'>Loading button click data.</div>
+    <button id='myButton'>Click me!</button> -->
     <script src='/umpire/umpire.js'></script>
   </body>
 </html>

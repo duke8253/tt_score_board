@@ -1,5 +1,7 @@
 'use strict'
 
+// TODO: (node:13342) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 message listeners added. Use emitter.setMaxListeners() to increase limit
+
 const express = require('express')
 const http    = require('http');
 const util    = require('util');

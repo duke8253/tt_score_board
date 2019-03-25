@@ -1,0 +1,98 @@
+.scoreboard {
+  display: grid;
+  border: 1px solid rgba(0, 0, 0, 1);
+  grid-template-columns: 50% 50%;
+}
+
+.scoreboard-left {
+  display: grid;
+  background-color: rgb(33, 142, 231);
+  border: 1px solid rgba(0, 0, 0, 1);
+  padding: 10px;
+}
+
+.scoreboard-right {
+  display: grid;
+  background-color: rgb(230, 50, 50);
+  border: 1px solid rgba(0, 0, 0, 1);
+  padding: 10px;
+}
+
+.scoreboard-border {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border:  1px solid rgba(0, 0, 0, 1);
+}
+
+.player-names {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 1);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.game-score {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 1);
+  padding: 20px;
+  font-size: 100px;
+  text-align: center;
+}
+
+.set-score {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 1);
+  padding: 20px;
+  font-size: 100px;
+  text-align: center;
+  color: rgb(235, 177, 18)
+}
+
+.match-result {
+  display: grid;
+  background-color: rgb(118, 236, 95);
+  border: 1px solid rgba(0, 0, 0, 1);
+  padding: 10px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.match-result-border {
+  display: grid;
+  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.match-result-header {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 1);
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+.match-result-name {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 1);
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.match-result-score {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 1);
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.plus-minus-button {
+
+}
