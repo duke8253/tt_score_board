@@ -12,53 +12,171 @@ const set_score_right_minus = document.getElementById('set-score-right-minus');
 const set_score_right_plus = document.getElementById('set-score-right-plus');
 
 game_score_left_minus.addEventListener('click', function(e) {
-  changeScore('game-score-left', false);
+  var score = changeScore('game-score-left', false);
 
   fetch('/umpire', {
-      method: 'POST',
-      body: JSON.stringify({
-        data: 'test'
-      }),
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(function(res) {
-      if(res.ok) {
-        console.log('Click was sent.');
-        return;
-      }
-      throw new Error('Request failed.');
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
+    method: 'POST',
+    body: JSON.stringify({
+      for: 'game-score-left',
+      data: score
+    }),
+    headers: {'Content-Type': 'application/json'}
+  }).then(function(res) {
+    if(res.ok) {
+      console.log('Click was sent.');
+      return;
+    }
+    throw new Error('Request failed.');
+  }).catch(function(err) {
+    console.log(err);
+  });
 });
 
 game_score_left_plus.addEventListener('click', function(e) {
-  changeScore('game-score-left', true);
+  var score = changeScore('game-score-left', true);
+
+  fetch('/umpire', {
+    method: 'POST',
+    body: JSON.stringify({
+      for: 'game-score-left',
+      data: score
+    }),
+    headers: {'Content-Type': 'application/json'}
+  }).then(function(res) {
+    if(res.ok) {
+      console.log('Click was sent.');
+      return;
+    }
+    throw new Error('Request failed.');
+  }).catch(function(err) {
+    console.log(err);
+  });
 });
 
 set_score_left_minus.addEventListener('click', function(e) {
-  changeScore('set-score-left', false);
+  var score = changeScore('set-score-left', false);
+
+  fetch('/umpire', {
+    method: 'POST',
+    body: JSON.stringify({
+      for: 'set-score-left',
+      data: score
+    }),
+    headers: {'Content-Type': 'application/json'}
+  }).then(function(res) {
+    if(res.ok) {
+      console.log('Click was sent.');
+      return;
+    }
+    throw new Error('Request failed.');
+  }).catch(function(err) {
+    console.log(err);
+  });
 });
 
 set_score_left_plus.addEventListener('click', function(e) {
-  changeScore('set-score-left', true);
+  var score = changeScore('set-score-left', true);
+
+  fetch('/umpire', {
+    method: 'POST',
+    body: JSON.stringify({
+      for: 'set-score-left',
+      data: score
+    }),
+    headers: {'Content-Type': 'application/json'}
+  }).then(function(res) {
+    if(res.ok) {
+      console.log('Click was sent.');
+      return;
+    }
+    throw new Error('Request failed.');
+  }).catch(function(err) {
+    console.log(err);
+  });
 });
 
 game_score_right_minus.addEventListener('click', function(e) {
-  changeScore('game-score-right', false);
+  var score = changeScore('game-score-right', false);
+
+  fetch('/umpire', {
+    method: 'POST',
+    body: JSON.stringify({
+      for: 'game-score-right',
+      data: score
+    }),
+    headers: {'Content-Type': 'application/json'}
+  }).then(function(res) {
+    if(res.ok) {
+      console.log('Click was sent.');
+      return;
+    }
+    throw new Error('Request failed.');
+  }).catch(function(err) {
+    console.log(err);
+  });
 });
 
 game_score_right_plus.addEventListener('click', function(e) {
-  changeScore('game-score-right', true);
+  var score = changeScore('game-score-right', true);
+
+  fetch('/umpire', {
+    method: 'POST',
+    body: JSON.stringify({
+      for: 'game-score-right',
+      data: score
+    }),
+    headers: {'Content-Type': 'application/json'}
+  }).then(function(res) {
+    if(res.ok) {
+      console.log('Click was sent.');
+      return;
+    }
+    throw new Error('Request failed.');
+  }).catch(function(err) {
+    console.log(err);
+  });
 });
 
 set_score_right_minus.addEventListener('click', function(e) {
-  changeScore('set-score-right', false);
+  var score = changeScore('set-score-right', false);
+
+  fetch('/umpire', {
+    method: 'POST',
+    body: JSON.stringify({
+      for: 'set-score-right',
+      data: score
+    }),
+    headers: {'Content-Type': 'application/json'}
+  }).then(function(res) {
+    if(res.ok) {
+      console.log('Click was sent.');
+      return;
+    }
+    throw new Error('Request failed.');
+  }).catch(function(err) {
+    console.log(err);
+  });
 });
 
 set_score_right_plus.addEventListener('click', function(e) {
-  changeScore('set-score-right', true);
+  var score = changeScore('set-score-right', true);
+
+  fetch('/umpire', {
+    method: 'POST',
+    body: JSON.stringify({
+      for: 'set-score-right',
+      data: score
+    }),
+    headers: {'Content-Type': 'application/json'}
+  }).then(function(res) {
+    if(res.ok) {
+      console.log('Click was sent.');
+      return;
+    }
+    throw new Error('Request failed.');
+  }).catch(function(err) {
+    console.log(err);
+  });
 });
 
 function changeScore(score_id, plus_one) {
@@ -74,4 +192,6 @@ function changeScore(score_id, plus_one) {
   } else if (score_int > 0) {
     score.innerText = String(score_int - 1);
   }
+
+  return score.innerText;
 }

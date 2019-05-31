@@ -4,7 +4,7 @@
   "description": "Table Tennis Utilities",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "redis": "^2.8.0"
   },
   "devDependencies": {},

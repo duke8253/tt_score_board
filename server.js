@@ -74,7 +74,7 @@ app.get('/umpire', function(req, res) {
 
 app.post('/umpire', function(req, res) {
   console.log(req.body);
-  pub.publish('match-update', 'test');
+  pub.publish('match-update', JSON.stringify(req.body));
   res.end();
 });
 
