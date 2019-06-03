@@ -15,8 +15,8 @@ const port = 8080;
 
 const app = express();
 
-const sub = redis.createClient();
 const pub = redis.createClient();
+const subs = new Map();
 
 class ServerEvent {
   constructor() {
@@ -44,8 +44,6 @@ class ServerEvent {
   }
 };
 
-sub.subscribe('match-update');
-
 app.use('/match', express.static(path.join(__dirname, '/match')));
 app.use('/umpire', express.static(path.join(__dirname, '/umpire')));
 app.use(bodyParser.json());
@@ -57,6 +55,18 @@ app.get('/', function(req, res) {
 });
 
 app.get('/match', function(req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write('List of matches:'); // TODO
+  res.end();
+});
+
+app.get('/match/:match_id', function(req, res) {
+  var match_id = req.params['match_id'];
+  if (!subs.has(match_id)) {
+    subs.set(match_id, redis.createClient());
+    subs.get(match_id).subscribe('match-update.' + match_id);
+  }
+
   if (req.headers.accept && req.headers.accept == 'text/event-stream') {
     initSSE(req, res);
   } else {
@@ -68,13 +78,20 @@ app.get('/match', function(req, res) {
 
 app.get('/umpire', function(req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write('List of matches:');  // TODO
+  res.end();
+});
+
+app.get('/umpire/:match_id', function(req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
   res.write(fs.readFileSync(path.join(__dirname, 'umpire/umpire.html')));
   res.end();
 });
 
-app.post('/umpire', function(req, res) {
+app.post('/umpire/:match_id', function(req, res) {
   console.log(req.body);
-  pub.publish('match-update', JSON.stringify(req.body));
+  var channel = 'match-update.' + req.params['match_id'];
+  pub.publish(channel, JSON.stringify(req.body));
   res.end();
 });
 
@@ -90,8 +107,9 @@ function initSSE(req, res) {
   });
 
   var id = (new Date()).toLocaleTimeString();
+  var match_id = req.params['match_id'];
 
-  sub.on('message', function(channel, message) {
+  subs.get(match_id).on('message', function(channel, message) {
     console.log('channel: ' + channel);
     console.log('message: ' + message);
     var messageEvent = new ServerEvent();

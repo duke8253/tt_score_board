@@ -1,8 +1,10 @@
 'use strict'
 
+const match_id = window.location.pathname.split('/')[2];
+
 if(typeof(EventSource) !== 'undefined') {
   // Yes! Server-sent events support!
-  var source = new EventSource('/match');
+  var source = new EventSource('/match/' + match_id);
   source.onmessage = function(event) {
     var recv = JSON.parse(event.data);
     changeScore(recv['for'], recv['data'])
