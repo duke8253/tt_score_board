@@ -62,9 +62,10 @@ app.get('/match', function(req, res) {
 
 app.get('/match/:match_id', function(req, res) {
   var match_id = req.params['match_id'];
+  var channel = 'match-update.' + match_id;
   if (!subs.has(match_id)) {
     subs.set(match_id, redis.createClient());
-    subs.get(match_id).subscribe('match-update.' + match_id);
+    subs.get(match_id).subscribe(channel);
   }
 
   if (req.headers.accept && req.headers.accept == 'text/event-stream') {
@@ -89,10 +90,30 @@ app.get('/umpire/:match_id', function(req, res) {
 });
 
 app.post('/umpire/:match_id', function(req, res) {
-  console.log(req.body);
   var channel = 'match-update.' + req.params['match_id'];
   pub.publish(channel, JSON.stringify(req.body));
+  pub.hset([channel, req.body['for'], req.body['data']]);
+
   res.end();
+});
+
+app.get('/score/:match_id', function(req, res) {
+  var channel = 'match-update.' + req.params['match_id'];
+  pub.hmget(channel,
+            [
+              'game_score_left',
+              'set_score_left',
+              'game_score_right',
+              'set_score_right'
+            ],
+            function(err, reply) {
+    res.send({
+      'game_score_left': reply[0],
+      'set_score_left': reply[1],
+      'game_score_right': reply[2],
+      'set_score_right': reply[3]
+    });
+  });
 });
 
 app.listen(port, function() {
@@ -110,8 +131,6 @@ function initSSE(req, res) {
   var match_id = req.params['match_id'];
 
   subs.get(match_id).on('message', function(channel, message) {
-    console.log('channel: ' + channel);
-    console.log('message: ' + message);
     var messageEvent = new ServerEvent();
     messageEvent.addId(id);
     messageEvent.addData(message);
