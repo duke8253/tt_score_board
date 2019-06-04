@@ -93,6 +93,16 @@
   text-align: center;
 }
 
-.plus-minus-button {
+.minus-button {
+  font-size: 20px;
+  width: 30px;
+  height: 120px;
+  float: left;
+}
 
+.plus-button {
+  font-size: 20px;
+  width: 30px;
+  height: 120px;
+  float: right;
 }
